@@ -1,0 +1,111 @@
+<script>
+    const wrapper = document.querySelector(".sliderWrapper")
+    const menuItems = document.querySelectorAll(".menuItem")
+  
+   const products = [
+      { id: 1,
+        title: "Air Force",
+        color : [
+            {
+                color :"aqua",
+                img : "./images/Air_Force_1-removebg-preview.png",
+            },
+
+            {
+                color :"skyblue",
+                img : "./images/Air_Force_1-removebg-preview.png",
+            }
+        ]
+
+      },
+
+      { id: 2,
+        title: "Blaze",
+        color : [
+            {
+                color :"black",
+                img : "./images/blazer-removebg-preview.png",
+            },
+
+            {
+                color :"white",
+                img : "./images/blazers-removebg-preview.png",
+            }
+        ]
+      },
+
+      { id: 3,
+        title: "Crater",
+        color : [
+            {
+                color :"white",
+                img : ".images/crater_3-removebg-preview.png",
+            },
+
+            {
+                color :"gray",
+                img : "./images/crater_4-removebg-preview.png",
+            }
+        ]
+      },
+   ];
+
+
+   let choosenProduct = Produts[0];
+
+
+   currentProductTitle = document.querySelector(".ProductTitle");
+   currentProductPrice = document.querySelector(".ProductPrice");
+   currentProductImg = document.querySelector(".ProductImages");
+   currentProductColors =document.querySelectorAll(".color");
+   currentProductSizes = document.querySelectorAll(".size")
+    
+   //change  the choosen product 
+   let ChoosenProduct = Product[index]
+   
+   // chnage the current slide image
+    menuItems.forEach((item,index) =>{
+        item.addEventListener("click", () =>{
+         wrapper.style.tranform = `translateX(${-100 * index}vw)`;
+       
+     // chnage current text 
+       currentProductTitle.textContent = choosenProduct.title
+       currentProductPrice.textContent = "$" + choosenProduct.price
+       currentProductImg.src = choosenProduct.color[index].img;
+    });
+  });
+
+   // assign color
+    choosenProductColors.forEach((color,index) => {
+        color.addEventListener("click" , ()=> {
+        choosenProductImg.src = choosenProduct.color[index].img;
+        });
+    });
+
+
+    currentProductSizes.forEach((size,index) => {
+        size.addEventListener("click", () => {
+            currentProductSizes.forEach((size) =>{
+                size.style.backgroundColor = "white";
+                size.style.color = "black";
+            });
+            size.style.backgroundColor = "black";
+            size.style.color = "white";
+        });
+    });
+
+
+    //payment 
+
+    const ProductButton = document.querySelector(".ProductButton");
+    const Payment = document.querySelector(".payment");
+    const close =  document.querySelector(".close")
+
+    ProductButton.addEventListener("click", () => {
+        Payment.style.display = "flex";
+    });
+
+    close.addEventListener("click", () => {
+        Payment.style.display = "none";
+    });
+</script>
